@@ -3,3 +3,4 @@ torchvision
 torchaudio
 rl_zoo3
 gym
+stable-baselines3
