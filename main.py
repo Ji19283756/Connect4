@@ -1,17 +1,18 @@
-from Board import Board
-from random import choice
+from Board import Connect4
+from time import sleep
 # from stable_baselines3 import A2C
 
 
-for x in range(10):
-    board = Board()
-    while not board.done:
-        for player in [1, 2]:
-            board.add_checker(choice(board.give_open_cols()), player)
-            winner = board.check_for_winner()
+env = Connect4()
+env.reset()
 
-            if board.done:
-                board.print()
-                break
+for step in range(200):
+    env.render()
+    # take random action
+    obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
+    print(reward)
+    sleep(5)
 
-print(winner)
+    if terminated or truncated:
+        break
+
